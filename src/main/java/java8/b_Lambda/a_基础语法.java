@@ -1,4 +1,4 @@
-package java8.Lambda;
+package java8.b_Lambda;
 
 /**
  * @Author: wanghuadong

@@ -1,6 +1,6 @@
-package java8.Stream;
+package java8.c_Stream;
 
-import java8.类.Employee;
+import java8.a_类.Employee;
 import org.junit.Test;
 
 import java.util.*;
