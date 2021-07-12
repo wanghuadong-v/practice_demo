@@ -1,4 +1,4 @@
-package java8.b_Lambda;
+package _2.java8.b_Lambda;
 
 /**
  * @Author: wanghuadong
@@ -6,7 +6,7 @@ package java8.b_Lambda;
  * @Version: 1.0
  */
 
-import java8.a_类.Employee;
+import _2.java8.a_类.Employee;
 import org.junit.Test;
 
 import java.io.PrintStream;

@@ -1,4 +1,4 @@
-package java8.a_类;
+package _2.java8.a_类;
 
 /**
  * @Author: wanghuadong
