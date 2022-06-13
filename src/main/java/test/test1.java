@@ -1,6 +1,7 @@
 package test;
 
 import java.util.Locale;
+import java.util.UUID;
 
 /**
  * @Description TODO
@@ -10,5 +11,8 @@ import java.util.Locale;
 public class test1 {
     public static void main(String[] args) {
         System.out.println("213");
+
+        UUID uuid = UUID.randomUUID();
+        System.out.println(uuid);
     }
 }

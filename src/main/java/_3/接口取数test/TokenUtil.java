@@ -7,11 +7,13 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 
 public class TokenUtil {
-	public static final String EXCH_SERVER = "https://dsly.95306.cn/crl-mt-outer/channel";
-//	public static final String APPID = "NR88QMV3TFQB";
-//	public static final String APPSECRET = "RXWHWCYMFD7ZXPR6DQ0Z";
-	public static final String APPID = "87KDMX0ZX25K";
-	public static final String APPSECRET = "AIXESJM6WP107XZWBXXN";
+	public static final String EXCH_SERVER = "http://dsly.95306.cn/crl-mt-outer/channel1";
+//	public static final String APPID = "87KDMX0ZX25K";
+//	public static final String APPSECRET = "AIXESJM6WP107XZWBXXN";
+
+	public static final String APPID = "IEBVUPFB29U8";//邯黄
+
+	public static final String APPSECRET = "9KKAVAYQ131CN6TB6W6V";//邯黄
 	
 	public static String createToken() {
 		
