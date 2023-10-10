@@ -1,7 +1,7 @@
 package test;
 
-import java.util.Locale;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 /**
  * @Description TODO
@@ -10,9 +10,23 @@ import java.util.UUID;
  */
 public class test1 {
     public static void main(String[] args) {
-        System.out.println("213");
 
         UUID uuid = UUID.randomUUID();
-        System.out.println(uuid);
+//        System.out.println(uuid);
+
+
+        String str = "2022-02-12";
+        String substring = str.substring(0, 7);
+//        System.out.println(substring);
+
+
+        String str1 = "V2.0";
+        String pattern = "^V[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*$";
+        boolean matches = Pattern.matches(pattern, str1);
+        System.out.println(matches);
+
+        String s = String.valueOf(null);
+        System.out.println(s);
+
     }
 }
