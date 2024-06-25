@@ -1,40 +1,38 @@
-package 站点查询;
+package _6站点查询;
 
 import cn.hutool.json.JSONUtil;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description TODO
  * @Author wanghuadong
- * @Date 2021/9/22 16:01
+ * @Date 2021/9/23 9:59
  */
-public class test {
+public class test2 {
     public static void main(String[] args) {
         String str = "{\"data\":[{\"start_station\":\"FXP\",\"n_station\":\"GJV\",\"current_station\":\"BCV\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"白文东\",\"longitude\":\"111.114182\",\"latitude\":\"38.168980\"},{\"start_station\":\"FXP\",\"n_station\":\"TBV\",\"current_station\":\"BCV\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"白文东\",\"longitude\":\"111.114182\",\"latitude\":\"38.168980\"},{\"start_station\":\"FXP\",\"n_station\":\"HHV\",\"current_station\":\"BJV\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"部落\",\"longitude\":\"112.734783\",\"latitude\":\"38.564452\"},{\"start_station\":\"FXP\",\"n_station\":\"XGV\",\"current_station\":\"DEV\",\"end_station\":\"TBV\",\"a_num\":40,\"zm\":\"大新\",\"longitude\":\"112.486088\",\"latitude\":\"39.347906\"},{\"start_station\":\"FXP\",\"n_station\":\"YPV\",\"current_station\":\"DEV\",\"end_station\":\"TBV\",\"a_num\":17,\"zm\":\"大新\",\"longitude\":\"112.486088\",\"latitude\":\"39.347906\"},{\"start_station\":\"FXP\",\"n_station\":\"YPV\",\"current_station\":\"DTV\",\"end_station\":\"TBV\",\"a_num\":40,\"zm\":\"大同\",\"longitude\":\"113.295584\",\"latitude\":\"40.121216\"},{\"start_station\":\"FXP\",\"n_station\":\"TBV\",\"current_station\":\"DTV\",\"end_station\":\"TBV\",\"a_num\":4,\"zm\":\"大同\",\"longitude\":\"113.295584\",\"latitude\":\"40.121216\"},{\"start_station\":\"FXP\",\"n_station\":\"DFP\",\"current_station\":\"FXP\",\"end_station\":\"TBV\",\"a_num\":9,\"zm\":\"丰台西\",\"longitude\":\"116.233337\",\"latitude\":\"39.852789\"},{\"start_station\":\"FXP\",\"n_station\":\"LVV\",\"current_station\":\"FXP\",\"end_station\":\"TBV\",\"a_num\":31,\"zm\":\"丰台西\",\"longitude\":\"116.233337\",\"latitude\":\"39.852789\"},{\"start_station\":\"FXP\",\"n_station\":\"YJV\",\"current_station\":\"FXP\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"丰台西\",\"longitude\":\"116.233337\",\"latitude\":\"39.852789\"},{\"start_station\":\"FXP\",\"n_station\":\"ONP\",\"current_station\":\"FXP\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"丰台西\",\"longitude\":\"116.233337\",\"latitude\":\"39.852789\"},{\"start_station\":\"FXP\",\"n_station\":\"GLP\",\"current_station\":\"FXP\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"丰台西\",\"longitude\":\"116.233337\",\"latitude\":\"39.852789\"},{\"start_station\":\"FXP\",\"n_station\":\"DTV\",\"current_station\":\"FXP\",\"end_station\":\"TBV\",\"a_num\":12,\"zm\":\"丰台西\",\"longitude\":\"116.233337\",\"latitude\":\"39.852789\"},{\"start_station\":\"FXP\",\"n_station\":\"XRV\",\"current_station\":\"GJV\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"古交\",\"longitude\":\"112.1565\",\"latitude\":\"37.917692\"},{\"start_station\":\"FXP\",\"n_station\":\"DTV\",\"current_station\":\"GLP\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"郭磊庄\",\"longitude\":\"114.543876\",\"latitude\":\"40.718744\"},{\"start_station\":\"FXP\",\"n_station\":\"YPV\",\"current_station\":\"GYV\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"崞阳镇\",\"longitude\":\"112.76529\",\"latitude\":\"38.898441\"},{\"start_station\":\"FXP\",\"n_station\":\"DHV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":16,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"WSV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":3,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"GYV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":28,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"YPV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":342,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"XSV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":3,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"XVV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"WPV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":6,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"ZIV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":223,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"DKV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":23,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"TWV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":15,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"TBV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":4,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"FSV\",\"current_station\":\"LVV\",\"end_station\":\"TBV\",\"a_num\":38,\"zm\":\"灵丘\",\"longitude\":\"114.215831\",\"latitude\":\"39.461772\"},{\"start_station\":\"FXP\",\"n_station\":\"XGV\",\"current_station\":\"NWV\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"宁武\",\"longitude\":\"112.313353\",\"latitude\":\"39.007402\"},{\"start_station\":\"FXP\",\"n_station\":\"YCV\",\"current_station\":\"OOP\",\"end_station\":\"TBV\",\"a_num\":8,\"zm\":\"石家庄西\",\"longitude\":\"114.357807\",\"latitude\":\"38.075032\"},{\"start_station\":\"FXP\",\"n_station\":\"YPV\",\"current_station\":\"TWV\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"唐之洼\",\"longitude\":\"114.125821\",\"latitude\":\"39.392349\"},{\"start_station\":\"FXP\",\"n_station\":\"GJV\",\"current_station\":\"UXV\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"岚县\",\"longitude\":\"111.649269\",\"latitude\":\"38.256021\"},{\"start_station\":\"FXP\",\"n_station\":\"TBV\",\"current_station\":\"XRV\",\"end_station\":\"TBV\",\"a_num\":4,\"zm\":\"西张\",\"longitude\":\"112.465967\",\"latitude\":\"37.951541\"},{\"start_station\":\"FXP\",\"n_station\":\"DKV\",\"current_station\":\"XSV\",\"end_station\":\"TBV\",\"a_num\":3,\"zm\":\"下社\",\"longitude\":\"113.170787\",\"latitude\":\"39.149297\"},{\"start_station\":\"FXP\",\"n_station\":\"TBV\",\"current_station\":\"XXV\",\"end_station\":\"TBV\",\"a_num\":5,\"zm\":\"忻州\",\"longitude\":\"112.739111\",\"latitude\":\"38.420579\"},{\"start_station\":\"FXP\",\"n_station\":\"TXV\",\"current_station\":\"YCV\",\"end_station\":\"TBV\",\"a_num\":20,\"zm\":\"榆次\",\"longitude\":\"112.725251\",\"latitude\":\"37.694506\"},{\"start_station\":\"FXP\",\"n_station\":\"TBV\",\"current_station\":\"YCV\",\"end_station\":\"TBV\",\"a_num\":22,\"zm\":\"榆次\",\"longitude\":\"112.725251\",\"latitude\":\"37.694506\"},{\"start_station\":\"FXP\",\"n_station\":\"NWV\",\"current_station\":\"YFV\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"阳方口\",\"longitude\":\"112.332848\",\"latitude\":\"39.097448\"},{\"start_station\":\"FXP\",\"n_station\":\"DTV\",\"current_station\":\"YJV\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"永嘉堡\",\"longitude\":\"114.216968\",\"latitude\":\"40.528003\"},{\"start_station\":\"FXP\",\"n_station\":\"TBV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":297,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"TCV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":7,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"TXV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":1,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"HHV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"BJV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":8,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"YQV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":7,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"XXV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":19,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"GCV\",\"current_station\":\"YPV\",\"end_station\":\"TBV\",\"a_num\":2,\"zm\":\"原平\",\"longitude\":\"112.718922\",\"latitude\":\"38.718338\"},{\"start_station\":\"FXP\",\"n_station\":\"HHV\",\"current_station\":\"YQV\",\"end_station\":\"TBV\",\"a_num\":7,\"zm\":\"阳曲\",\"longitude\":\"112.676591\",\"latitude\":\"38.057871\"},{\"start_station\":\"FXP\",\"n_station\":\"YPV\",\"current_station\":\"ZIV\",\"end_station\":\"TBV\",\"a_num\":4,\"zm\":\"枣林\",\"longitude\":\"113.087174\",\"latitude\":\"39.131906\"}]}\n";
-        Map<String,List<Map<String,String>>> map = JSONUtil.toBean(str, Map.class);
+        Map<String, List<Map<String,String>>> map = JSONUtil.toBean(str, Map.class);
         List<Map<String, String>> data = map.get("data");
-        ArrayList<List<String>> lists = new ArrayList<>();
-        getPositions(data,"FXP",null,lists);
-        System.out.println(lists);
+        getPositions(data,"TBV","FXP",null);
     }
 
-    public static void getPositions(List<Map<String, String>> list, String current_station, ArrayList<String> positions,ArrayList<List<String>> allPositions){
+    public static void getPositions(List<Map<String, String>> list, String end_station, String current_station, ArrayList<String> positions){
         ArrayList<String> thisPositons = new ArrayList<>();
         if (positions != null) thisPositons.addAll(positions);
         thisPositons.add(current_station);
-        boolean flag = false;
+
+        String thisCurr = null;
+        String thisNext = null;
         for (int i = 0; i < list.size(); i++) {
-            String n_station = list.get(i).get("n_station");
             String curr = list.get(i).get("current_station");
-            if (n_station != null && curr != null && curr.equals(current_station)){
-                getPositions(list,n_station,thisPositons,allPositions);
-                flag = true;
+            String n_station = list.get(i).get("n_station");
+            if (current_station.equals(curr)){
+                thisNext = n_station;
             }
         }
-        if (!flag){
-//            System.out.println(thisPositons);
-            allPositions.add(thisPositons);
-        }
+        getPositions(list,end_station,thisNext,positions);
     }
 }
-
