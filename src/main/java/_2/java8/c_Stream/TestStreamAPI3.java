@@ -1,7 +1,6 @@
 package _2.java8.c_Stream;
 
 import _2.java8.a_类.Employee;
-import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,7 +22,6 @@ public class TestStreamAPI3 {
      * max-返回流中的最大值
      * min-返回流中的最小值
      */
-    @Test
     public void test1(){
         List<Employee> list = new ArrayList<>();
         list.add(new Employee(1,"huahua",18,10.12));
@@ -41,7 +39,6 @@ public class TestStreamAPI3 {
      * reduce（T identity，BinaryOperator/reduce(BinaryOperator)）---可以将流中元素反复结合起来，得到一个值
      *
      */
-    @Test
     public void test2(){
         List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Integer reduce = integers.stream()
@@ -62,7 +59,6 @@ public class TestStreamAPI3 {
      * 收集
      * collect-将流装换为其他形式。接收一个Collection接口的实现，用于给Stream中元素做汇总的方法。
      */
-    @Test
     public void test3(){
         List<Employee> list = new ArrayList<>();
         list.add(new Employee(1,"huahua",18,10.12));

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子时钟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .clock-container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .clock {
+            font-size: 80px;
+            font-weight: bold;
+            color: #00ff88;
+            text-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        .date {
+            font-size: 24px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .weather {
+            font-size: 28px;
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .weather-icon {
+            font-size: 36px;
+            margin-right: 10px;
+        }
+
+        .loading {
+            font-size: 18px;
+            color: #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="clock">
+            <span id="time"></span>
+        </div>
+        <div class="date" id="date"></div>
+        <div class="weather" id="weather">
+            <span class="loading">正在加载天气...</span>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            // 获取时间组件（24 小时制）
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            // 更新时间显示
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+
+            // 更新日期显示
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const weekDays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            const weekDay = weekDays[now.getDay()];
+
+            document.getElementById('date').textContent = `${year}年${month}月${day}日 ${weekDay}`;
+        }
+
+        async function fetchWeather() {
+            try {
+                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=39.9042&longitude=116.4074&current_weather=true&timezone=Asia%2FShanghai');
+                const data = await response.json();
+
+                const weather = data.current_weather;
+                const temperature = Math.round(weather.temperature);
+                const windspeed = weather.windspeed;
+                const weatherCode = weather.weathercode;
+
+                const weatherInfo = getWeatherInfo(weatherCode, temperature, windspeed);
+
+                document.getElementById('weather').innerHTML = `
+                    <span class="weather-icon">${weatherInfo.icon}</span>
+                    <span>温度：${temperature}°C | 风速：${windspeed} km/h | ${weatherInfo.description}</span>
+                `;
+            } catch (error) {
+                document.getElementById('weather').innerHTML = '<span class="loading">天气数据加载失败</span>';
+                console.error('获取天气失败:', error);
+            }
+        }
+
+        function getWeatherInfo(code, temp, wind) {
+            const weatherMap = {
+                0: { icon: '☀️', description: '晴朗' },
+                1: { icon: '🌤️', description: '主要晴朗' },
+                2: { icon: '⛅', description: '多云' },
+                3: { icon: '☁️', description: '阴天' },
+                45: { icon: '🌫️', description: '雾' },
+                48: { icon: '🌫️', description: '沉积雾凇' },
+                51: { icon: '🌦️', description: '轻度毛毛雨' },
+                53: { icon: '🌦️', description: '中度毛毛雨' },
+                55: { icon: '🌧️', description: '重度毛毛雨' },
+                61: { icon: '☔', description: '轻度降雨' },
+                63: { icon: '☔', description: '中度降雨' },
+                65: { icon: '☔', description: '重度降雨' },
+                71: { icon: '❄️', description: '轻度降雪' },
+                73: { icon: '❄️', description: '中度降雪' },
+                75: { icon: '❄️', description: '重度降雪' },
+                80: { icon: '🌦️', description: '轻度阵雨' },
+                81: { icon: '☔', description: '中度阵雨' },
+                82: { icon: '☔', description: '重度阵雨' },
+                95: { icon: '⛈️', description: '雷雨' },
+                96: { icon: '⛈️', description: '轻度雷冰雹' },
+                99: { icon: '⛈️', description: '重度雷冰雹' }
+            };
+
+            return weatherMap[code] || { icon: '🌡️', description: `气温 ${temp}°C` };
+        }
+
+        // 初始调用
+        updateClock();
+
+        // 每秒更新一次
+        setInterval(updateClock, 1000);
+
+        // 加载天气
+        fetchWeather();
+
+        // 每 30 分钟更新一次天气
+        setInterval(fetchWeather, 1800000);
+    </script>
+</body>
+</html>

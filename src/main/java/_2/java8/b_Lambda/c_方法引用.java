@@ -7,7 +7,6 @@ package _2.java8.b_Lambda;
  */
 
 import _2.java8.a_类.Employee;
-import org.junit.Test;
 
 import java.io.PrintStream;
 import java.util.Comparator;
@@ -31,7 +30,6 @@ import java.util.function.*;
 public class c_方法引用 {
 
     //数组引用
-    @Test
     public void test8(){
         Function<Integer, String[]> fun = (args) -> new String[args];
         String[] strs = fun.apply(10);
@@ -45,14 +43,12 @@ public class c_方法引用 {
     }
 
     //构造器引用
-    @Test
     public void test7(){
         Function<String, Employee> fun = Employee::new;
 
         BiFunction<String, Integer, Employee> fun2 = Employee::new;
     }
 
-    @Test
     public void test6(){
         Supplier<Employee> sup = () -> new Employee();
         System.out.println(sup.get());
@@ -64,7 +60,6 @@ public class c_方法引用 {
     }
 
     //类名 :: 实例方法名
-    @Test
     public void test5(){
         BiPredicate<String, String> bp = (x, y) -> x.equals(y);
         System.out.println(bp.test("abcde", "abcde"));
@@ -88,7 +83,6 @@ public class c_方法引用 {
     }
 
     //类名 :: 静态方法名
-    @Test
     public void test4(){
         Comparator<Integer> com = (x, y) -> Integer.compare(x, y);
 
@@ -97,7 +91,6 @@ public class c_方法引用 {
         Comparator<Integer> com2 = Integer::compare;
     }
 
-    @Test
     public void test3(){
         BiFunction<Double, Double, Double> fun = (x, y) -> Math.max(x, y);
         System.out.println(fun.apply(1.5, 22.2));
@@ -109,7 +102,6 @@ public class c_方法引用 {
     }
 
     //对象的引用 :: 实例方法名
-    @Test
     public void test2(){
         Employee emp = new Employee(101, "张三", 18, 9999.99);
 
@@ -122,7 +114,6 @@ public class c_方法引用 {
         System.out.println(sup2.get());
     }
 
-    @Test
     public void test1(){
         PrintStream ps = System.out;
         Consumer<String> con = (str) -> ps.println(str);

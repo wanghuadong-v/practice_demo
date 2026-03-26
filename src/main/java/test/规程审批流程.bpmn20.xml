@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://bpmn.io/schema/bpmn">
+  <process id="WF_PROCEDURE" name="规程审批流程" isExecutable="true">
+    <startEvent id="startEvent_1" name="开始"/>
+    <userTask id="BZ" name="编制" flowable:assignee="${USER_BZ}">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="Flow_1eynnkl" sourceRef="startEvent_1" targetRef="BZ"/>
+    <userTask id="JH" name="校核" flowable:assignee="${USER_JH}"/>
+    <sequenceFlow id="Flow_0dqq5dh" sourceRef="BZ" targetRef="JH"/>
+    <userTask id="SD" name="审定" flowable:assignee="${USER_SD}" flowable:skipExpression="${variables:isEmpty(USER_SD)}">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="Flow_0be6w16" sourceRef="JH" targetRef="SD"/>
+    <userTask id="HQ" name="会签" flowable:assignee="${USER_HQ}" flowable:skipExpression="${variables:isEmpty(USER_LIST_HQ)}">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false" flowable:collection="USER_LIST_HQ" flowable:elementVariable="USER_HQ">
+        <completionCondition>${nrOfCompletedInstances==nrOfInstances}</completionCondition>
+      </multiInstanceLoopCharacteristics>
+    </userTask>
+    <sequenceFlow id="Flow_07jt1uc" sourceRef="SD" targetRef="HQ"/>
+    <userTask id="PZ" name="批准" flowable:assignee="${USER_PZ}">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://flowable.org/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="Flow_0urcrvg" sourceRef="HQ" targetRef="PZ"/>
+    <endEvent id="Event_1r1b05s"/>
+    <sequenceFlow id="Flow_1lphqnb" sourceRef="PZ" targetRef="DOC_PZ"/>
+    <userTask id="DOC_PZ" name="文档批准" flowable:assignee="${USER_DOC_PZ}"/>
+    <sequenceFlow id="sid-7cf321be-bd14-49f9-a257-27c09f7e2cbf" sourceRef="DOC_PZ" targetRef="Event_1r1b05s"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_WF_PROCEDURE">
+    <bpmndi:BPMNPlane bpmnElement="WF_PROCEDURE" id="BPMNPlane_WF_PROCEDURE">
+      <bpmndi:BPMNShape bpmnElement="startEvent_1" id="BPMNShape_startEvent_1">
+        <omgdc:Bounds height="36.0" width="36.0" x="240.0" y="200.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="BZ" id="BPMNShape_BZ">
+        <omgdc:Bounds height="80.0" width="100.0" x="330.0" y="178.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="JH" id="BPMNShape_JH">
+        <omgdc:Bounds height="80.0" width="100.0" x="490.0" y="178.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="SD" id="BPMNShape_SD">
+        <omgdc:Bounds height="80.0" width="100.0" x="650.0" y="178.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="HQ" id="BPMNShape_HQ">
+        <omgdc:Bounds height="80.0" width="100.0" x="810.0" y="178.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="PZ" id="BPMNShape_PZ">
+        <omgdc:Bounds height="80.0" width="100.0" x="970.0" y="178.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Event_1r1b05s" id="BPMNShape_Event_1r1b05s">
+        <omgdc:Bounds height="36.0" width="36.0" x="1292.0" y="200.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0urcrvg" id="BPMNEdge_Flow_0urcrvg">
+        <omgdi:waypoint x="909.9499999998419" y="218.0"/>
+        <omgdi:waypoint x="970.0" y="218.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0dqq5dh" id="BPMNEdge_Flow_0dqq5dh">
+        <omgdi:waypoint x="429.9499999998419" y="218.0"/>
+        <omgdi:waypoint x="490.0" y="218.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_1eynnkl" id="BPMNEdge_Flow_1eynnkl">
+        <omgdi:waypoint x="275.9499985258377" y="218.0"/>
+        <omgdi:waypoint x="329.99999999995924" y="218.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_07jt1uc" id="BPMNEdge_Flow_07jt1uc">
+        <omgdi:waypoint x="749.9499999998419" y="218.0"/>
+        <omgdi:waypoint x="810.0" y="218.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_1lphqnb" id="BPMNEdge_Flow_1lphqnb">
+        <omgdi:waypoint x="1069.95" y="218.0"/>
+        <omgdi:waypoint x="1137.8484" y="218.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Flow_0be6w16" id="BPMNEdge_Flow_0be6w16">
+        <omgdi:waypoint x="589.9499999998419" y="218.0"/>
+        <omgdi:waypoint x="650.0" y="218.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="sid-17a35684-dbd7-4703-8b4c-496670971cf0" bpmnElement="DOC_PZ">
+        <omgdc:Bounds x="1137.8484" y="178.0" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-44bd9523-432f-481f-919d-ee0dbc4aadd5" bpmnElement="sid-7cf321be-bd14-49f9-a257-27c09f7e2cbf">
+        <omgdi:waypoint x="1237.8484" y="218.0"/>
+        <omgdi:waypoint x="1292.0" y="218.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

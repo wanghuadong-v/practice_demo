@@ -6,7 +6,6 @@ package _2.java8.b_Lambda;
  * @Version: 1.0
  */
 
-import org.junit.Test;
 
 import java.util.Comparator;
 import java.util.function.Consumer;
@@ -32,7 +31,6 @@ public class a_基础语法 {
     /**
      *  1.无参数，无返回值
      */
-    @Test
     public void test1(){
         Runnable r1 = () -> System.out.println("Hello Lambda");
         r1.run();
@@ -40,7 +38,6 @@ public class a_基础语法 {
     /**
      * 2.有一个参数，且无返回值
      */
-    @Test
     public void test2(){
         Consumer<String> con = x -> System.out.println(x);
         con.accept("haha");
@@ -49,7 +46,6 @@ public class a_基础语法 {
     /**
      *  4.有两个及以上参数，有返回值，并且Lambda体中有多条语句
      */
-    @Test
     public void test3(){
         Comparator<Integer> com = (x,y) -> {
             System.out.println("函数式接口");
