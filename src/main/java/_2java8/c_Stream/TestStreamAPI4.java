@@ -1,6 +1,6 @@
-package _2.java8.c_Stream;
+package _2java8.c_Stream;
 
-import _2.java8.a_类.Employee;
+import _2java8.a_类.Employee;
 import org.junit.Test;
 
 import java.util.ArrayList;

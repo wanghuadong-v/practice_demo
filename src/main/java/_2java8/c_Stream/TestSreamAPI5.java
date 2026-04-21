@@ -1,4 +1,4 @@
-package _2.java8.c_Stream;
+package _2java8.c_Stream;
 
 import org.junit.Test;
 

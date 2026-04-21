@@ -1,4 +1,4 @@
-package _3.接口取数test;
+package _3接口取数test;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package _1.CAS;
+package _1CAS;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

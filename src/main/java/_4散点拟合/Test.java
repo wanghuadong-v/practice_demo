@@ -1,4 +1,4 @@
-package _4.散点拟合;
+package _4散点拟合;
 
 import org.apache.commons.math3.fitting.WeightedObservedPoints;
 

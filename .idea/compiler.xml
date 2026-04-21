@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="练习demo" />
         <module name="面试题" />
+        <module name="learn-test" />
       </profile>
     </annotationProcessing>
   </component>

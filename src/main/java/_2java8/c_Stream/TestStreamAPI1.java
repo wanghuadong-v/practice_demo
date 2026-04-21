@@ -1,4 +1,4 @@
-package _2.java8.c_Stream;
+package _2java8.c_Stream;
 
 /**
  * @Author: wanghuadong
@@ -6,7 +6,7 @@ package _2.java8.c_Stream;
  * @Version: 1.0
  */
 
-import _2.java8.a_类.Employee;
+import _2java8.a_类.Employee;
 
 import java.util.ArrayList;
 import java.util.Arrays;
